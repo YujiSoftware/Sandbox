@@ -10,47 +10,64 @@
         <div id="container">
         </div>
         
+        <script src="jquery-2.2.4.min.js"></script>
+        <script src="bootstrap.min.js"></script>
         <script src="react.min.js"></script>
         <script src="react-dom.min.js"></script>
         <script src="browser.min.js"></script>
         <script src="react-bootstrap-table.min.js"></script>
-        <script src="bootstrap.min.js"></script>
         <script type="text/babel">
-// products will be presented by ReactBsTable
-var products = [
-  {
-      id: 1,
-      name: "Product1",
-      price: 120
-  },{
-      id: 2,
-      name: "Product2",
-      price: 80
-  },{
-      id: 3,
-      name: "Product3",
-      price: 207
-  },{
-      id: 4,
-      name: "Product4",
-      price: 100
-  },{
-      id: 5,
-      name: "Product5",
-      price: 150
-  },{
-      id: 6,
-      name: "Product1",
-      price: 160
-  }
-];
+var Cake = React.createClass({
+    getInitialState: function() {
+        return {
+            cake: []
+        };
+    },
+
+    componentDidMount: function() {
+        this.serverRequest = $.get("sample.json", function (result) {
+            this.setState({
+                cake: [
+                    {
+                        title: "batter",
+                        data: result.batters.batter
+                    },
+                    {
+                        title: "topping",
+                        data: result.topping
+                    }
+                ]
+            });
+        }.bind(this));
+    },
+
+    componentWillUnmount: function() {
+        this.serverRequest.abort();
+    },
+
+    render: function() {
+        var commentNodes = this.state.cake.map(function (cake) {
+            return (
+                <div>
+                    <h3>{cake.title}</h3>
+                    <BootstrapTable data={cake.data} striped={true} hover={true}>
+                        <TableHeaderColumn isKey={true} dataField="id">Product ID</TableHeaderColumn>
+                        <TableHeaderColumn dataField="type">Type</TableHeaderColumn>
+                    </BootstrapTable>
+                </div>
+            );
+        });
+        
+        return (
+            <div className="commentList">
+                {commentNodes}
+            </div>
+        );
+    }
+});
 
 ReactDOM.render(
-  <BootstrapTable data={products} striped={true} hover={true}>
-      <TableHeaderColumn isKey={true} dataField="id">Product ID</TableHeaderColumn>
-      <TableHeaderColumn dataField="name">Product Name</TableHeaderColumn>
-      <TableHeaderColumn dataField="price">Product Price</TableHeaderColumn>
-  </BootstrapTable>,
+  <Cake />,
   document.getElementById('container')
 );
         </script>
