@@ -27,8 +27,11 @@ var Cake = React.createClass({
     },
 
     render: function() {
-        var commentNodes = this.state.cake.map(function (cake) {
-            return (
+        var commentNodes = [];
+        for(var i = 0; i < this.state.cake.length; i++) {
+            var cake = this.state.cake[i];
+            
+            commentNodes.push(
                 <div>
                     <h3>{cake.title}</h3>
                     <BootstrapTable data={cake.data} striped={true} hover={true}>
@@ -37,7 +40,7 @@ var Cake = React.createClass({
                     </BootstrapTable>
                 </div>
             );
-        });
+        }
         
         return (
             <div className="commentList">
