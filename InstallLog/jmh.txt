@@ -1,0 +1,605 @@
+R:\Download\jmh-eaf181b4eac2>mvn install -DskipTests
+
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Java Microbenchmark Harness Parent
+[INFO] JMH Core
+[INFO] JMH Generators: Annotation Processors
+[INFO] JMH Core Integration Tests
+[INFO] JMH Generators: Reflection
+[INFO] JMH Generators: ASM
+[INFO] JMH Core Compilation Tests
+[INFO] JMH Core Benchmarks
+[INFO] JMH Samples
+[INFO] JMH Generators: Bytecode
+[INFO] JMH Archetypes
+[INFO] JMH Benchmark Archetype: Java
+[INFO] JMH Benchmark Archetype: Scala
+[INFO] JMH Benchmark Archetype: Groovy
+[INFO] JMH Benchmark Archetype: Kotlin
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Java Microbenchmark Harness Parent 1.14.1
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] >>> maven-source-plugin:2.2.1:jar (attach-sources) > generate-sources @ jmh-parent >>>
+[INFO] 
+[INFO] <<< maven-source-plugin:2.2.1:jar (attach-sources) < generate-sources @ jmh-parent <<<
+[INFO] 
+[INFO] --- maven-source-plugin:2.2.1:jar (attach-sources) @ jmh-parent ---
+[INFO] 
+[INFO] --- maven-javadoc-plugin:2.9:jar (attach-javadoc) @ jmh-parent ---
+[INFO] Not executing Javadoc as the project is not a Java classpath-capable package
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ jmh-parent ---
+[INFO] Installing r:\Download\jmh-eaf181b4eac2\pom.xml to C:\Users\Yuzi\.m2\repository\org\openjdk\jmh\jmh-parent\1.14.1\jmh-parent-1.14.1.pom
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building JMH Core 1.14.1
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-license-plugin:1.10.b1:format (default) @ jmh-core ---
+[INFO] Updating license headers...
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-core\LICENSE
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-core\src\main\resources\jmh-security-minimal-runner.policy
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-core\src\main\resources\jmh-security-minimal.policy
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-core\src\main\resources\jmh-security.policy
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-core\src\main\resources\LICENSE
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-core\src\main\resources\THIRD-PARTY
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-core\src\test\resources\META-INF\CompilerHints
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-core\src\test\resources\org\openjdk\jmh\results\format\output-golden.csv.us
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-core\src\test\resources\org\openjdk\jmh\results\format\output-golden.csv.ru
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-core\src\test\resources\org\openjdk\jmh\results\format\output-golden.json
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-core\src\test\resources\org\openjdk\jmh\results\format\output-golden.latex.us
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-core\src\test\resources\org\openjdk\jmh\results\format\output-golden.scsv.root
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-core\src\test\resources\org\openjdk\jmh\results\format\output-golden.scsv.ru
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-core\src\test\resources\org\openjdk\jmh\results\format\output-golden.scsv.us
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-core\src\test\resources\org\openjdk\jmh\results\format\output-golden.text.root
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-core\src\test\resources\org\openjdk\jmh\results\format\output-golden.text.ru
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-core\src\test\resources\org\openjdk\jmh\results\format\output-golden.csv.root
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-core\THIRD-PARTY
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-core\src\test\resources\org\openjdk\jmh\results\format\output-golden.text.us
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-core\src\test\resources\org\openjdk\jmh\results\format\output-golden.latex.root
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-core\src\test\resources\org\openjdk\jmh\results\format\output-golden.latex.ru
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ jmh-core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 8 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ jmh-core ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ jmh-core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 14 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ jmh-core ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.14.1:test (default-test) @ jmh-core ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ jmh-core ---
+[INFO] Building jar: R:\Download\jmh-eaf181b4eac2\jmh-core\target\jmh-core-1.14.1.jar
+[INFO] 
+[INFO] >>> maven-source-plugin:2.2.1:jar (attach-sources) > generate-sources @ jmh-core >>>
+[INFO] 
+[INFO] <<< maven-source-plugin:2.2.1:jar (attach-sources) < generate-sources @ jmh-core <<<
+[INFO] 
+[INFO] --- maven-source-plugin:2.2.1:jar (attach-sources) @ jmh-core ---
+[INFO] 
+[INFO] --- maven-javadoc-plugin:2.9:jar (attach-javadoc) @ jmh-core ---
+[INFO] 
+警告6個
+[WARNING] Javadoc Warnings
+[WARNING] R:\Download\jmh-eaf181b4eac2\jmh-core\src\main\java\org\openjdk\jmh\profile\ExternalProfiler.java:76: 警告: pidの@paramがありません
+[WARNING] Collection<? extends Result> afterTrial(BenchmarkResult br, long pid, File stdOut, File stdErr);
+[WARNING] ^
+[WARNING] R:\Download\jmh-eaf181b4eac2\jmh-core\src\main\java\org\openjdk\jmh\results\Result.java:191: 警告: @returnの説明がありません
+[WARNING] * @return
+[WARNING] ^
+[WARNING] R:\Download\jmh-eaf181b4eac2\jmh-core\src\main\java\org\openjdk\jmh\profile\WinPerfAsmProfiler.java:84: 警告: initLineの@paramがありません
+[WARNING] public WinPerfAsmProfiler(String initLine) throws ProfilerException {
+[WARNING] ^
+[WARNING] R:\Download\jmh-eaf181b4eac2\jmh-core\src\main\java\org\openjdk\jmh\profile\WinPerfAsmProfiler.java:84: 警告: org.openjdk.jmh.profile.ProfilerExceptionの@throwsがありません
+[WARNING] public WinPerfAsmProfiler(String initLine) throws ProfilerException {
+[WARNING] ^
+[WARNING] R:\Download\jmh-eaf181b4eac2\jmh-core\src\main\java\org\openjdk\jmh\runner\Runner.java:129: 警告: @paramの説明がありません
+[WARNING] * @param options
+[WARNING] ^
+[WARNING] R:\Download\jmh-eaf181b4eac2\jmh-core\src\main\java\org\openjdk\jmh\util\Utils.java:488: 警告: <T>の@paramがありません
+[WARNING] public static <T> Iterable<T> adaptForLoop(final Iterator<T> it) {
+[WARNING] ^
+[INFO] Building jar: R:\Download\jmh-eaf181b4eac2\jmh-core\target\jmh-core-1.14.1-javadoc.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ jmh-core ---
+[INFO] Installing R:\Download\jmh-eaf181b4eac2\jmh-core\target\jmh-core-1.14.1.jar to C:\Users\Yuzi\.m2\repository\org\openjdk\jmh\jmh-core\1.14.1\jmh-core-1.14.1.jar
+[INFO] Installing R:\Download\jmh-eaf181b4eac2\jmh-core\pom.xml to C:\Users\Yuzi\.m2\repository\org\openjdk\jmh\jmh-core\1.14.1\jmh-core-1.14.1.pom
+[INFO] Installing R:\Download\jmh-eaf181b4eac2\jmh-core\target\jmh-core-1.14.1-sources.jar to C:\Users\Yuzi\.m2\repository\org\openjdk\jmh\jmh-core\1.14.1\jmh-core-1.14.1-sources.jar
+[INFO] Installing R:\Download\jmh-eaf181b4eac2\jmh-core\target\jmh-core-1.14.1-javadoc.jar to C:\Users\Yuzi\.m2\repository\org\openjdk\jmh\jmh-core\1.14.1\jmh-core-1.14.1-javadoc.jar
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building JMH Generators: Annotation Processors 1.14.1
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-license-plugin:1.10.b1:format (default) @ jmh-generator-annprocess ---
+[INFO] Updating license headers...
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-generator-annprocess\THIRD-PARTY
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-generator-annprocess\LICENSE
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-generator-annprocess\src\main\resources\THIRD-PARTY
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-generator-annprocess\src\main\resources\LICENSE
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ jmh-generator-annprocess ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 3 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ jmh-generator-annprocess ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ jmh-generator-annprocess ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory R:\Download\jmh-eaf181b4eac2\jmh-generator-annprocess\src\test\resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ jmh-generator-annprocess ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.14.1:test (default-test) @ jmh-generator-annprocess ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ jmh-generator-annprocess ---
+[INFO] 
+[INFO] >>> maven-source-plugin:2.2.1:jar (attach-sources) > generate-sources @ jmh-generator-annprocess >>>
+[INFO] 
+[INFO] <<< maven-source-plugin:2.2.1:jar (attach-sources) < generate-sources @ jmh-generator-annprocess <<<
+[INFO] 
+[INFO] --- maven-source-plugin:2.2.1:jar (attach-sources) @ jmh-generator-annprocess ---
+[INFO] 
+[INFO] --- maven-javadoc-plugin:2.9:jar (attach-javadoc) @ jmh-generator-annprocess ---
+[INFO] Building jar: R:\Download\jmh-eaf181b4eac2\jmh-generator-annprocess\target\jmh-generator-annprocess-1.14.1-javadoc.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ jmh-generator-annprocess ---
+[INFO] Installing R:\Download\jmh-eaf181b4eac2\jmh-generator-annprocess\target\jmh-generator-annprocess-1.14.1.jar to C:\Users\Yuzi\.m2\repository\org\openjdk\jmh\jmh-generator-annprocess\1.14.1\jmh-generator-annprocess-1.14.1.jar
+[INFO] Installing R:\Download\jmh-eaf181b4eac2\jmh-generator-annprocess\pom.xml to C:\Users\Yuzi\.m2\repository\org\openjdk\jmh\jmh-generator-annprocess\1.14.1\jmh-generator-annprocess-1.14.1.pom
+[INFO] Installing R:\Download\jmh-eaf181b4eac2\jmh-generator-annprocess\target\jmh-generator-annprocess-1.14.1-sources.jar to C:\Users\Yuzi\.m2\repository\org\openjdk\jmh\jmh-generator-annprocess\1.14.1\jmh-generator-annprocess-1.14.1-sources.jar
+[INFO] Installing R:\Download\jmh-eaf181b4eac2\jmh-generator-annprocess\target\jmh-generator-annprocess-1.14.1-javadoc.jar to C:\Users\Yuzi\.m2\repository\org\openjdk\jmh\jmh-generator-annprocess\1.14.1\jmh-generator-annprocess-1.14.1-javadoc.jar
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building JMH Core Integration Tests 1.14.1
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-license-plugin:1.10.b1:format (default) @ jmh-core-it ---
+[INFO] Updating license headers...
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-core-it\LICENSE
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-core-it\src\test\resources\LICENSE
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ jmh-core-it ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory R:\Download\jmh-eaf181b4eac2\jmh-core-it\src\main\resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.0:compile (default-compile) @ jmh-core-it ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to R:\Download\jmh-eaf181b4eac2\jmh-core-it\target\classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ jmh-core-it ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 3 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.0:testCompile (default-testCompile) @ jmh-core-it ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 265 source files to R:\Download\jmh-eaf181b4eac2\jmh-core-it\target\test-classes
+[WARNING] /R:/Download/jmh-eaf181b4eac2/jmh-core-it/src/test/java/org/openjdk/jmh/it/errors/ForkedErrorsTest.java:[38,16] sun.misc.Unsafeは内部所有のAPIであり、今後のリリースで削除される可能性があります
+[WARNING] /R:/Download/jmh-eaf181b4eac2/jmh-core-it/src/test/java/org/openjdk/jmh/it/errors/ForkedErrorsTest.java:[38,16] sun.misc.Unsafeは内部所有のAPIであり、今後のリリースで削除される可能性があります
+[WARNING] /R:/Download/jmh-eaf181b4eac2/jmh-core-it/src/test/java/org/openjdk/jmh/it/errors/ForkedErrorsTest.java:[38,16] sun.misc.Unsafeは内部所有のAPIであり、今後のリリースで削除される可能性があります
+[WARNING] /R:/Download/jmh-eaf181b4eac2/jmh-core-it/src/test/java/org/openjdk/jmh/it/errors/ForkedErrorsTest.java:[38,16] sun.misc.Unsafeは内部所有のAPIであり、今後のリリースで削除される可能性があります
+[WARNING] /R:/Download/jmh-eaf181b4eac2/jmh-core-it/src/test/java/org/openjdk/jmh/it/errors/ForkedErrorsTest.java:[73,20] sun.misc.Unsafeは内部所有のAPIであり、今後のリリースで削除される可能性があります
+[WARNING] /R:/Download/jmh-eaf181b4eac2/jmh-core-it/src/test/java/org/openjdk/jmh/it/errors/ForkedErrorsTest.java:[74,19] sun.misc.Unsafeは内部所有のAPIであり、今後のリリースで削除される可能性があります
+[WARNING] /R:/Download/jmh-eaf181b4eac2/jmh-core-it/src/test/java/org/openjdk/jmh/it/errors/ForkedErrorsTest.java:[76,17] sun.misc.Unsafeは内部所有のAPIであり、今後のリリースで削除される可能性があります
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.14.1:test (default-test) @ jmh-core-it ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ jmh-core-it ---
+[INFO] Building jar: R:\Download\jmh-eaf181b4eac2\jmh-core-it\target\jmh-core-it-1.14.1.jar
+[INFO] 
+[INFO] >>> maven-source-plugin:2.2.1:jar (attach-sources) > generate-sources @ jmh-core-it >>>
+[INFO] 
+[INFO] <<< maven-source-plugin:2.2.1:jar (attach-sources) < generate-sources @ jmh-core-it <<<
+[INFO] 
+[INFO] --- maven-source-plugin:2.2.1:jar (attach-sources) @ jmh-core-it ---
+[INFO] 
+[INFO] --- maven-javadoc-plugin:2.9:jar (attach-javadoc) @ jmh-core-it ---
+[INFO] Building jar: R:\Download\jmh-eaf181b4eac2\jmh-core-it\target\jmh-core-it-1.14.1-javadoc.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ jmh-core-it ---
+[INFO] Installing R:\Download\jmh-eaf181b4eac2\jmh-core-it\target\jmh-core-it-1.14.1.jar to C:\Users\Yuzi\.m2\repository\org\openjdk\jmh\jmh-core-it\1.14.1\jmh-core-it-1.14.1.jar
+[INFO] Installing R:\Download\jmh-eaf181b4eac2\jmh-core-it\pom.xml to C:\Users\Yuzi\.m2\repository\org\openjdk\jmh\jmh-core-it\1.14.1\jmh-core-it-1.14.1.pom
+[INFO] Installing R:\Download\jmh-eaf181b4eac2\jmh-core-it\target\jmh-core-it-1.14.1-sources.jar to C:\Users\Yuzi\.m2\repository\org\openjdk\jmh\jmh-core-it\1.14.1\jmh-core-it-1.14.1-sources.jar
+[INFO] Installing R:\Download\jmh-eaf181b4eac2\jmh-core-it\target\jmh-core-it-1.14.1-javadoc.jar to C:\Users\Yuzi\.m2\repository\org\openjdk\jmh\jmh-core-it\1.14.1\jmh-core-it-1.14.1-javadoc.jar
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building JMH Generators: Reflection 1.14.1
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-license-plugin:1.10.b1:format (default) @ jmh-generator-reflection ---
+[INFO] Updating license headers...
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-generator-reflection\LICENSE
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-generator-reflection\src\main\resources\LICENSE
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-generator-reflection\src\main\resources\THIRD-PARTY
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-generator-reflection\THIRD-PARTY
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ jmh-generator-reflection ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ jmh-generator-reflection ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ jmh-generator-reflection ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory R:\Download\jmh-eaf181b4eac2\jmh-generator-reflection\src\test\resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ jmh-generator-reflection ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.14.1:test (default-test) @ jmh-generator-reflection ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ jmh-generator-reflection ---
+[INFO] 
+[INFO] >>> maven-source-plugin:2.2.1:jar (attach-sources) > generate-sources @ jmh-generator-reflection >>>
+[INFO] 
+[INFO] <<< maven-source-plugin:2.2.1:jar (attach-sources) < generate-sources @ jmh-generator-reflection <<<
+[INFO] 
+[INFO] --- maven-source-plugin:2.2.1:jar (attach-sources) @ jmh-generator-reflection ---
+[INFO] 
+[INFO] --- maven-javadoc-plugin:2.9:jar (attach-javadoc) @ jmh-generator-reflection ---
+[INFO] Building jar: R:\Download\jmh-eaf181b4eac2\jmh-generator-reflection\target\jmh-generator-reflection-1.14.1-javadoc.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ jmh-generator-reflection ---
+[INFO] Installing R:\Download\jmh-eaf181b4eac2\jmh-generator-reflection\target\jmh-generator-reflection-1.14.1.jar to C:\Users\Yuzi\.m2\repository\org\openjdk\jmh\jmh-generator-reflection\1.14.1\jmh-generator-reflection-1.14.1.jar
+[INFO] Installing R:\Download\jmh-eaf181b4eac2\jmh-generator-reflection\pom.xml to C:\Users\Yuzi\.m2\repository\org\openjdk\jmh\jmh-generator-reflection\1.14.1\jmh-generator-reflection-1.14.1.pom
+[INFO] Installing R:\Download\jmh-eaf181b4eac2\jmh-generator-reflection\target\jmh-generator-reflection-1.14.1-sources.jar to C:\Users\Yuzi\.m2\repository\org\openjdk\jmh\jmh-generator-reflection\1.14.1\jmh-generator-reflection-1.14.1-sources.jar
+[INFO] Installing R:\Download\jmh-eaf181b4eac2\jmh-generator-reflection\target\jmh-generator-reflection-1.14.1-javadoc.jar to C:\Users\Yuzi\.m2\repository\org\openjdk\jmh\jmh-generator-reflection\1.14.1\jmh-generator-reflection-1.14.1-javadoc.jar
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building JMH Generators: ASM 1.14.1
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-license-plugin:1.10.b1:format (default) @ jmh-generator-asm ---
+[INFO] Updating license headers...
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-generator-asm\LICENSE
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-generator-asm\src\main\resources\LICENSE
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-generator-asm\src\main\resources\THIRD-PARTY
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-generator-asm\THIRD-PARTY
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ jmh-generator-asm ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ jmh-generator-asm ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ jmh-generator-asm ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory R:\Download\jmh-eaf181b4eac2\jmh-generator-asm\src\test\resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ jmh-generator-asm ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.14.1:test (default-test) @ jmh-generator-asm ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ jmh-generator-asm ---
+[INFO] 
+[INFO] >>> maven-source-plugin:2.2.1:jar (attach-sources) > generate-sources @ jmh-generator-asm >>>
+[INFO] 
+[INFO] <<< maven-source-plugin:2.2.1:jar (attach-sources) < generate-sources @ jmh-generator-asm <<<
+[INFO] 
+[INFO] --- maven-source-plugin:2.2.1:jar (attach-sources) @ jmh-generator-asm ---
+[INFO] 
+[INFO] --- maven-javadoc-plugin:2.9:jar (attach-javadoc) @ jmh-generator-asm ---
+[INFO] Building jar: R:\Download\jmh-eaf181b4eac2\jmh-generator-asm\target\jmh-generator-asm-1.14.1-javadoc.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ jmh-generator-asm ---
+[INFO] Installing R:\Download\jmh-eaf181b4eac2\jmh-generator-asm\target\jmh-generator-asm-1.14.1.jar to C:\Users\Yuzi\.m2\repository\org\openjdk\jmh\jmh-generator-asm\1.14.1\jmh-generator-asm-1.14.1.jar
+[INFO] Installing R:\Download\jmh-eaf181b4eac2\jmh-generator-asm\pom.xml to C:\Users\Yuzi\.m2\repository\org\openjdk\jmh\jmh-generator-asm\1.14.1\jmh-generator-asm-1.14.1.pom
+[INFO] Installing R:\Download\jmh-eaf181b4eac2\jmh-generator-asm\target\jmh-generator-asm-1.14.1-sources.jar to C:\Users\Yuzi\.m2\repository\org\openjdk\jmh\jmh-generator-asm\1.14.1\jmh-generator-asm-1.14.1-sources.jar
+[INFO] Installing R:\Download\jmh-eaf181b4eac2\jmh-generator-asm\target\jmh-generator-asm-1.14.1-javadoc.jar to C:\Users\Yuzi\.m2\repository\org\openjdk\jmh\jmh-generator-asm\1.14.1\jmh-generator-asm-1.14.1-javadoc.jar
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building JMH Core Compilation Tests 1.14.1
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-license-plugin:1.10.b1:format (default) @ jmh-core-ct ---
+[INFO] Updating license headers...
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ jmh-core-ct ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 226 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.0:compile (default-compile) @ jmh-core-ct ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ jmh-core-ct ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory R:\Download\jmh-eaf181b4eac2\jmh-core-ct\src\test\resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.0:testCompile (default-testCompile) @ jmh-core-ct ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 226 source files to R:\Download\jmh-eaf181b4eac2\jmh-core-ct\target\test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.14.1:test (default-test) @ jmh-core-ct ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ jmh-core-ct ---
+[INFO] 
+[INFO] >>> maven-source-plugin:2.2.1:jar (attach-sources) > generate-sources @ jmh-core-ct >>>
+[INFO] 
+[INFO] <<< maven-source-plugin:2.2.1:jar (attach-sources) < generate-sources @ jmh-core-ct <<<
+[INFO] 
+[INFO] --- maven-source-plugin:2.2.1:jar (attach-sources) @ jmh-core-ct ---
+[INFO] 
+[INFO] --- maven-javadoc-plugin:2.9:jar (attach-javadoc) @ jmh-core-ct ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ jmh-core-ct ---
+[INFO] Installing R:\Download\jmh-eaf181b4eac2\jmh-core-ct\target\jmh-core-ct-1.14.1.jar to C:\Users\Yuzi\.m2\repository\org\openjdk\jmh\jmh-core-ct\1.14.1\jmh-core-ct-1.14.1.jar
+[INFO] Installing R:\Download\jmh-eaf181b4eac2\jmh-core-ct\pom.xml to C:\Users\Yuzi\.m2\repository\org\openjdk\jmh\jmh-core-ct\1.14.1\jmh-core-ct-1.14.1.pom
+[INFO] Installing R:\Download\jmh-eaf181b4eac2\jmh-core-ct\target\jmh-core-ct-1.14.1-sources.jar to C:\Users\Yuzi\.m2\repository\org\openjdk\jmh\jmh-core-ct\1.14.1\jmh-core-ct-1.14.1-sources.jar
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building JMH Core Benchmarks 1.14.1
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-license-plugin:1.10.b1:format (default) @ jmh-core-benchmarks ---
+[INFO] Updating license headers...
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-core-benchmarks\LICENSE
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-core-benchmarks\src\main\LICENSE
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-core-benchmarks\src\main\THIRD-PARTY
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-core-benchmarks\THIRD-PARTY
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ jmh-core-benchmarks ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory R:\Download\jmh-eaf181b4eac2\jmh-core-benchmarks\src\main\resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.0:compile (default-compile) @ jmh-core-benchmarks ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 28 source files to R:\Download\jmh-eaf181b4eac2\jmh-core-benchmarks\target\classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ jmh-core-benchmarks ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory R:\Download\jmh-eaf181b4eac2\jmh-core-benchmarks\src\test\resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.0:testCompile (default-testCompile) @ jmh-core-benchmarks ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.14.1:test (default-test) @ jmh-core-benchmarks ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ jmh-core-benchmarks ---
+[INFO] Building jar: R:\Download\jmh-eaf181b4eac2\jmh-core-benchmarks\target\jmh-core-benchmarks-1.14.1.jar
+[INFO] 
+[INFO] --- maven-shade-plugin:2.0:shade (benchmarks) @ jmh-core-benchmarks ---
+[INFO] Including org.openjdk.jmh:jmh-core:jar:1.14.1 in the shaded jar.
+[INFO] Including net.sf.jopt-simple:jopt-simple:jar:4.6 in the shaded jar.
+[INFO] Including org.apache.commons:commons-math3:jar:3.2 in the shaded jar.
+[INFO] Replacing R:\Download\jmh-eaf181b4eac2\jmh-core-benchmarks\target\benchmarks.jar with R:\Download\jmh-eaf181b4eac2\jmh-core-benchmarks\target\jmh-core-benchmarks-1.14.1-shaded.jar
+[INFO] 
+[INFO] --- maven-shade-plugin:2.0:shade (validation) @ jmh-core-benchmarks ---
+[INFO] Including org.openjdk.jmh:jmh-core:jar:1.14.1 in the shaded jar.
+[INFO] Including net.sf.jopt-simple:jopt-simple:jar:4.6 in the shaded jar.
+[INFO] Including org.apache.commons:commons-math3:jar:3.2 in the shaded jar.
+[INFO] Replacing R:\Download\jmh-eaf181b4eac2\jmh-core-benchmarks\target\jmh-core-benchmarks.jar with R:\Download\jmh-eaf181b4eac2\jmh-core-benchmarks\target\jmh-core-benchmarks-1.14.1-full.jar
+[INFO] Attaching shaded artifact.
+[INFO] 
+[INFO] >>> maven-source-plugin:2.2.1:jar (attach-sources) > generate-sources @ jmh-core-benchmarks >>>
+[INFO] 
+[INFO] <<< maven-source-plugin:2.2.1:jar (attach-sources) < generate-sources @ jmh-core-benchmarks <<<
+[INFO] 
+[INFO] --- maven-source-plugin:2.2.1:jar (attach-sources) @ jmh-core-benchmarks ---
+[INFO] 
+[INFO] --- maven-javadoc-plugin:2.9:jar (attach-javadoc) @ jmh-core-benchmarks ---
+[INFO] Building jar: R:\Download\jmh-eaf181b4eac2\jmh-core-benchmarks\target\jmh-core-benchmarks-1.14.1-javadoc.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ jmh-core-benchmarks ---
+[INFO] Installing R:\Download\jmh-eaf181b4eac2\jmh-core-benchmarks\target\jmh-core-benchmarks-1.14.1.jar to C:\Users\Yuzi\.m2\repository\org\openjdk\jmh\jmh-core-benchmarks\1.14.1\jmh-core-benchmarks-1.14.1.jar
+[INFO] Installing R:\Download\jmh-eaf181b4eac2\jmh-core-benchmarks\pom.xml to C:\Users\Yuzi\.m2\repository\org\openjdk\jmh\jmh-core-benchmarks\1.14.1\jmh-core-benchmarks-1.14.1.pom
+[INFO] Installing R:\Download\jmh-eaf181b4eac2\jmh-core-benchmarks\target\jmh-core-benchmarks.jar to C:\Users\Yuzi\.m2\repository\org\openjdk\jmh\jmh-core-benchmarks\1.14.1\jmh-core-benchmarks-1.14.1-full.jar
+[INFO] Installing R:\Download\jmh-eaf181b4eac2\jmh-core-benchmarks\target\jmh-core-benchmarks-1.14.1-sources.jar to C:\Users\Yuzi\.m2\repository\org\openjdk\jmh\jmh-core-benchmarks\1.14.1\jmh-core-benchmarks-1.14.1-sources.jar
+[INFO] Installing R:\Download\jmh-eaf181b4eac2\jmh-core-benchmarks\target\jmh-core-benchmarks-1.14.1-javadoc.jar to C:\Users\Yuzi\.m2\repository\org\openjdk\jmh\jmh-core-benchmarks\1.14.1\jmh-core-benchmarks-1.14.1-javadoc.jar
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building JMH Samples 1.14.1
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-license-plugin:1.10.b1:format (default) @ jmh-samples ---
+[INFO] Updating license headers...
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-samples\LICENSE
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-samples\src\main\resources\LICENSE
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-samples\src\main\resources\THIRD-PARTY
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-samples\THIRD-PARTY
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ jmh-samples ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.0:compile (default-compile) @ jmh-samples ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 36 source files to R:\Download\jmh-eaf181b4eac2\jmh-samples\target\classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ jmh-samples ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory R:\Download\jmh-eaf181b4eac2\jmh-samples\src\test\resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.0:testCompile (default-testCompile) @ jmh-samples ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.14.1:test (default-test) @ jmh-samples ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ jmh-samples ---
+[INFO] Building jar: R:\Download\jmh-eaf181b4eac2\jmh-samples\target\jmh-samples-1.14.1.jar
+[INFO] 
+[INFO] --- maven-shade-plugin:2.0:shade (default) @ jmh-samples ---
+[INFO] Including org.openjdk.jmh:jmh-core:jar:1.14.1 in the shaded jar.
+[INFO] Including net.sf.jopt-simple:jopt-simple:jar:4.6 in the shaded jar.
+[INFO] Including org.apache.commons:commons-math3:jar:3.2 in the shaded jar.
+[INFO] Replacing R:\Download\jmh-eaf181b4eac2\jmh-samples\target\benchmarks.jar with R:\Download\jmh-eaf181b4eac2\jmh-samples\target\jmh-samples-1.14.1-shaded.jar
+[INFO] 
+[INFO] >>> maven-source-plugin:2.2.1:jar (attach-sources) > generate-sources @ jmh-samples >>>
+[INFO] 
+[INFO] <<< maven-source-plugin:2.2.1:jar (attach-sources) < generate-sources @ jmh-samples <<<
+[INFO] 
+[INFO] --- maven-source-plugin:2.2.1:jar (attach-sources) @ jmh-samples ---
+[INFO] 
+[INFO] --- maven-javadoc-plugin:2.9:jar (attach-javadoc) @ jmh-samples ---
+[INFO] Building jar: R:\Download\jmh-eaf181b4eac2\jmh-samples\target\jmh-samples-1.14.1-javadoc.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ jmh-samples ---
+[INFO] Installing R:\Download\jmh-eaf181b4eac2\jmh-samples\target\jmh-samples-1.14.1.jar to C:\Users\Yuzi\.m2\repository\org\openjdk\jmh\jmh-samples\1.14.1\jmh-samples-1.14.1.jar
+[INFO] Installing R:\Download\jmh-eaf181b4eac2\jmh-samples\pom.xml to C:\Users\Yuzi\.m2\repository\org\openjdk\jmh\jmh-samples\1.14.1\jmh-samples-1.14.1.pom
+[INFO] Installing R:\Download\jmh-eaf181b4eac2\jmh-samples\target\jmh-samples-1.14.1-sources.jar to C:\Users\Yuzi\.m2\repository\org\openjdk\jmh\jmh-samples\1.14.1\jmh-samples-1.14.1-sources.jar
+[INFO] Installing R:\Download\jmh-eaf181b4eac2\jmh-samples\target\jmh-samples-1.14.1-javadoc.jar to C:\Users\Yuzi\.m2\repository\org\openjdk\jmh\jmh-samples\1.14.1\jmh-samples-1.14.1-javadoc.jar
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building JMH Generators: Bytecode 1.14.1
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-license-plugin:1.10.b1:format (default) @ jmh-generator-bytecode ---
+[INFO] Updating license headers...
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-generator-bytecode\LICENSE
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-generator-bytecode\src\main\resources\LICENSE
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-generator-bytecode\src\main\resources\THIRD-PARTY
+[WARNING] Unknown file extension: R:\Download\jmh-eaf181b4eac2\jmh-generator-bytecode\THIRD-PARTY
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ jmh-generator-bytecode ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ jmh-generator-bytecode ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ jmh-generator-bytecode ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory R:\Download\jmh-eaf181b4eac2\jmh-generator-bytecode\src\test\resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ jmh-generator-bytecode ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.14.1:test (default-test) @ jmh-generator-bytecode ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ jmh-generator-bytecode ---
+[INFO] 
+[INFO] --- maven-shade-plugin:2.0:shade (default) @ jmh-generator-bytecode ---
+[INFO] Including org.openjdk.jmh:jmh-core:jar:1.14.1 in the shaded jar.
+[INFO] Including net.sf.jopt-simple:jopt-simple:jar:4.6 in the shaded jar.
+[INFO] Including org.apache.commons:commons-math3:jar:3.2 in the shaded jar.
+[INFO] Including org.openjdk.jmh:jmh-generator-reflection:jar:1.14.1 in the shaded jar.
+[INFO] Including org.openjdk.jmh:jmh-generator-asm:jar:1.14.1 in the shaded jar.
+[INFO] Including org.ow2.asm:asm:jar:5.0.3 in the shaded jar.
+[INFO] Replacing R:\Download\jmh-eaf181b4eac2\jmh-generator-bytecode\target\jmh-bytecode-generator.jar with R:\Download\jmh-eaf181b4eac2\jmh-generator-bytecode\target\jmh-generator-bytecode-1.14.1-shaded.jar
+[INFO] 
+[INFO] >>> maven-source-plugin:2.2.1:jar (attach-sources) > generate-sources @ jmh-generator-bytecode >>>
+[INFO] 
+[INFO] <<< maven-source-plugin:2.2.1:jar (attach-sources) < generate-sources @ jmh-generator-bytecode <<<
+[INFO] 
+[INFO] --- maven-source-plugin:2.2.1:jar (attach-sources) @ jmh-generator-bytecode ---
+[INFO] 
+[INFO] --- maven-javadoc-plugin:2.9:jar (attach-javadoc) @ jmh-generator-bytecode ---
+[INFO] Building jar: R:\Download\jmh-eaf181b4eac2\jmh-generator-bytecode\target\jmh-generator-bytecode-1.14.1-javadoc.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ jmh-generator-bytecode ---
+[INFO] Installing R:\Download\jmh-eaf181b4eac2\jmh-generator-bytecode\target\jmh-generator-bytecode-1.14.1.jar to C:\Users\Yuzi\.m2\repository\org\openjdk\jmh\jmh-generator-bytecode\1.14.1\jmh-generator-bytecode-1.14.1.jar
+[INFO] Installing R:\Download\jmh-eaf181b4eac2\jmh-generator-bytecode\pom.xml to C:\Users\Yuzi\.m2\repository\org\openjdk\jmh\jmh-generator-bytecode\1.14.1\jmh-generator-bytecode-1.14.1.pom
+[INFO] Installing R:\Download\jmh-eaf181b4eac2\jmh-generator-bytecode\target\jmh-generator-bytecode-1.14.1-sources.jar to C:\Users\Yuzi\.m2\repository\org\openjdk\jmh\jmh-generator-bytecode\1.14.1\jmh-generator-bytecode-1.14.1-sources.jar
+[INFO] Installing R:\Download\jmh-eaf181b4eac2\jmh-generator-bytecode\target\jmh-generator-bytecode-1.14.1-javadoc.jar to C:\Users\Yuzi\.m2\repository\org\openjdk\jmh\jmh-generator-bytecode\1.14.1\jmh-generator-bytecode-1.14.1-javadoc.jar
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building JMH Archetypes 1.14.1
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] >>> maven-source-plugin:2.2.1:jar (attach-sources) > generate-sources @ jmh-archetypes >>>
+[INFO] 
+[INFO] <<< maven-source-plugin:2.2.1:jar (attach-sources) < generate-sources @ jmh-archetypes <<<
+[INFO] 
+[INFO] --- maven-source-plugin:2.2.1:jar (attach-sources) @ jmh-archetypes ---
+[INFO] 
+[INFO] --- maven-javadoc-plugin:2.9:jar (attach-javadoc) @ jmh-archetypes ---
+[INFO] Not executing Javadoc as the project is not a Java classpath-capable package
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ jmh-archetypes ---
+[INFO] Installing R:\Download\jmh-eaf181b4eac2\jmh-archetypes\pom.xml to C:\Users\Yuzi\.m2\repository\org\openjdk\jmh\jmh-archetypes\1.14.1\jmh-archetypes-1.14.1.pom
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building JMH Benchmark Archetype: Java 1.14.1
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:resources (default-resources) @ jmh-java-benchmark-archetype ---
+[debug] execute contextualize
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] Copying 4 resources
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:testResources (default-testResources) @ jmh-java-benchmark-archetype ---
+[debug] execute contextualize
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-archetype-plugin:2.2:jar (default-jar) @ jmh-java-benchmark-archetype ---
+[INFO] Building archetype jar: R:\Download\jmh-eaf181b4eac2\jmh-archetypes\jmh-java-benchmark-archetype\target\jmh-java-benchmark-archetype-1.14.1
+[INFO] 
+[INFO] --- maven-archetype-plugin:2.2:integration-test (default-integration-test) @ jmh-java-benchmark-archetype ---
+[INFO] Processing Archetype IT project: test
+[INFO] ----------------------------------------------------------------------------
+[INFO] Using following parameters for creating project from Archetype: jmh-java-benchmark-archetype:1.14.1
+[INFO] ----------------------------------------------------------------------------
+[INFO] Parameter: groupId, Value: org.openjdk.jmh
+[INFO] Parameter: artifactId, Value: jmh-java-benchmark-archetype-test
+[INFO] Parameter: version, Value: 1.0-SNAPSHOT
+[INFO] Parameter: package, Value: org.openjdk.jmh
+[INFO] Parameter: packageInPathFormat, Value: org/openjdk/jmh
+[INFO] Parameter: package, Value: org.openjdk.jmh
+[INFO] Parameter: version, Value: 1.0-SNAPSHOT
+[INFO] Parameter: groupId, Value: org.openjdk.jmh
+[INFO] Parameter: artifactId, Value: jmh-java-benchmark-archetype-test
+[INFO] project created from Archetype in dir: R:\Download\jmh-eaf181b4eac2\jmh-archetypes\jmh-java-benchmark-archetype\target\test-classes\projects\test\project\jmh-java-benchmark-archetype-test
+[INFO] Invoking post-archetype-generation goals: verify
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] Java Microbenchmark Harness Parent ................. SUCCESS [  1.213 s]
+[INFO] JMH Core ........................................... SUCCESS [ 10.228 s]
+[INFO] JMH Generators: Annotation Processors .............. SUCCESS [  2.092 s]
+[INFO] JMH Core Integration Tests ......................... SUCCESS [ 20.103 s]
+[INFO] JMH Generators: Reflection ......................... SUCCESS [  1.336 s]
+[INFO] JMH Generators: ASM ................................ SUCCESS [  1.685 s]
+[INFO] JMH Core Compilation Tests ......................... SUCCESS [  1.680 s]
+[INFO] JMH Core Benchmarks ................................ SUCCESS [ 10.135 s]
+[INFO] JMH Samples ........................................ SUCCESS [ 11.677 s]
+[INFO] JMH Generators: Bytecode ........................... SUCCESS [  2.171 s]
+[INFO] JMH Archetypes ..................................... SUCCESS [  0.010 s]
+[INFO] JMH Benchmark Archetype: Java ...................... FAILURE [  0.509 s]
+[INFO] JMH Benchmark Archetype: Scala ..................... SKIPPED
+[INFO] JMH Benchmark Archetype: Groovy .................... SKIPPED
+[INFO] JMH Benchmark Archetype: Kotlin .................... SKIPPED
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 01:03 min
+[INFO] Finished at: 2016-09-23T02:04:27+09:00
+[INFO] Final Memory: 47M/810M
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-archetype-plugin:2.2:integration-test (default-integration-test) on project jmh-java-benchmark-archetype:
+[ERROR] Archetype IT 'test' failed: Cannot run additions goals.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+[ERROR] 
+[ERROR] After correcting the problems, you can resume the build with the command
+[ERROR]   mvn <goals> -rf :jmh-java-benchmark-archetype
