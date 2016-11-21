@@ -1,0 +1,19 @@
+*1479744445*[AtCoder]JJUG ナイト・セミナーで、飛び入りLT「AtCoderで始めるテスト駆動開発」をやってきました！
+
+JJUG ナイト・セミナー「ビール片手にLT大会&感謝祭」に、飛び入りで「AtCoderで始めるテスト駆動開発」というLTをやってきました！
+AC Unit Test という自作ツールを使ってもらうための宣伝ですｗ
+[https://addons.mozilla.org/firefox/addon/ac-unit-test/:title=AC Unit Test :: Add-ons for Firefox]
+[https://chrome.google.com/webstore/detail/ac-unit-test/lmahhninbclefepjbcdfbcjnancipfmi:title=AC Unit Test - Chrome ウェブストア]
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/CjOSWV5I6tPaWK" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/YujiSoftware/atcoder" title="AtCoderで始めるテスト駆動開発" target="_blank">AtCoderで始めるテスト駆動開発</a> </strong> from <strong><a target="_blank" href="//www.slideshare.net/YujiSoftware">YujiSoftware</a></strong> </div>
+
+本当に直前までやるつもりなかったのですが、時間が余っているということ＆たまたま社内でやったLTの資料が見つかったので、思い切ってやってみました。
+その場で @miyakawa_taku さんにお借りしたPC（感謝！）だったので、ライブコーディングまではできなかったのですが興味は持ってもらえたかな、と((ちなみに、社内でやったときはライブコーディングをしましたが、グダグダになりました。難しいですね…。))。
+
+そして、そこそこ笑いは取れたので満足です ←あれ？
+
+
+資料には、ライブコーディングの代わりに詳細な手順を追記しています。
+今回のお話で伝えたかった、テスト駆動開発の「テンポ」が伝われば幸いです。
+
+
+そして、興味を持った方はぜひ AC Unit Test をご利用ください (・∀・)
