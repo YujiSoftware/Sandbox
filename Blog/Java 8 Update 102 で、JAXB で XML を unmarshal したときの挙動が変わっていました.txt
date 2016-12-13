@@ -1,0 +1,71 @@
+
+Java SE 8 Update 92 では動いていたのに、Update 102 にしたら JAXB で XML を unmarshal したときにプロパティに値がセットされなくなるパターンがあるというお話。
+自分は、RSS のパースではまりました。
+
+
+** どんなコード？
+
+下記のようなデフォルト名前空間がついた XML があります。
+（これの場合、xmlns="http://purl.org/rss/1.0/" がデフォルト名前空間の指定）
+>|xml|
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+ xmlns="http://purl.org/rss/1.0/"
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <title>Sample RSS</title>
+</rdf:RDF>
+||<
+
+この XML を下記のコードで unmarshal してオブジェクトに格納しようとした場合、<span class="deco" style="font-weight:bold;">Update 92 では title プロパティに "Sample RSS" がセットされるのですが、Update 102 では値がセットされずに null になります。</span>
+>|java|
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+public class JDK8165299 {
+
+    public static void main(String[] args) throws JAXBException {
+        JAXBContext context = JAXBContext.newInstance(Rss.class);
+        Unmarshaller unmarshaller = context.createUnmarshaller();
+        Rss rss = (Rss) unmarshaller.unmarshal(new java.io.File("rss.xml"));
+
+        System.out.println(rss.title);
+    }
+
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlRootElement(name = "RDF", namespace = "http://www.w3.org/1999/02/22-rdf-syntax-ns#")
+    public static class Rss {
+        @XmlElement(name = "title")
+        public String title;
+    }
+}
+||<
+
+
+** なんで？
+最初にも書いた通り、XML にデフォルト名前空間が指定されています。
+その場合、<span class="deco" style="font-weight:bold;">Java SE 8 Update 92 まで誤って XmlElement アノテーションに名前空間を指定していなくてもマッピングがされてしまっていました。</span>
+それが、Java SE 8 Update 102 で修正されたのが原因です((つまり、上記の自分が書いたコードがバグっていて Java もバグっていて動いていたものが、Java のバグ修正によって動かなくなった))。
+
+
+なので、下記のように XmlElement に名前空間を指定すれば、Java SE 8 Update 102 でも title に値がマッピングされます。
+>|java|
+        @XmlElement(name = "title", namespace = "http://purl.org/rss/1.0/")
+        public String title;
+||<
+
+
+ちなみに、このデフォルト名前空間を指定していなくても誤ってマッピングされる事象は Java SE 8 (First Release) ～ Update 92 までの間で発生します。
+Java SE 7 Update 79 だと、事象は発生しません。なんでやねん。
+
+
+** 参考
+
+[https://bugs.openjdk.java.net/browse/JDK-8134111:title=&#x5B;JDK-8134111&#x5D; Unmarshaller unmarshalls XML element which doesn't have the expected namespace - Java Bug System]
+[https://bugs.openjdk.java.net/browse/JDK-8165299:title=&#x5B;JDK-8165299&#x5D; Jaxb unmarshaller stopped working in jdk 102 - Java Bug System]
+[http://mail.openjdk.java.net/pipermail/core-libs-dev/2016-March/039852.html:title=RFR: 8134111: Unmarshaller unmarshalls XML element which doesn't have the expected namespace]
