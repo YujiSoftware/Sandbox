@@ -1,0 +1,12 @@
+*[Windows]Windows のバルーン表示は、右クリックで消せる
+
+Windows の通知領域に出てくるバルーン表示が邪魔な時ありますよね。
+でも、いちいち×ボタンで閉じるのはめんどくさい…。
+
+
+そんなときは、<span class="deco" style="font-weight:bold;color:red;">バルーン上で右クリック！</span>
+これで消せます。
+[f:id:chiheisen:20161215013204p:image]
+
+
+お試しあれ。
