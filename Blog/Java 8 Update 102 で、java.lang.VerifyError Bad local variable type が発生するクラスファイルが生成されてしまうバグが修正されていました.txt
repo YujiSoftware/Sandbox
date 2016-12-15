@@ -1,0 +1,99 @@
+*1481819208*[Java]Java 8 Update 102 で、java.lang.VerifyError: Bad local variable type が発生するクラスファイルが生成されてしまうバグが修正されていました
+
+Java 8 Update 102 のリリースノートを見ていたら、[https://bugs.openjdk.java.net/browse/JDK-8066871:title=&#x5B;JDK-8066871&#x5D; java.lang.VerifyError: Bad local variable type - local final String - Java Bug System] というバグがあったので調べてみました。
+
+
+** どんなバグ？
+バグが起きるのは、ローカル変数が "final String" であること、その変数を条件演算子で使用していることの二点がそろったコードだそうです。
+たとえば、以下のようなコードが該当します。
+>|java|
+public class JDK8149330 {
+    public static void main(String[] args) {
+        final String y = "Y";
+        final String n = "N";
+
+        System.out.println(true ? y : n);
+    }
+}
+||<
+
+
+これを Java 8 Update 92 でコンパイルして実行すると、<span class="deco" style="font-weight:bold;color:red;">VerifyError で落ちます。</span>
+理由は、"Type top (current frame, locals[1]) is not assignable to reference type （ローカル変数1に参照型は割り当てられないよ！）" とのこと。
+>|
+E:\workspace\JDK8149330\src>"C:\Program Files\Java\jdk1.8.0_92\bin\java" JDK8149330
+Error: A JNI error has occurred, please check your installation and try again
+Exception in thread "main" java.lang.VerifyError: Bad local variable type
+Exception Details:
+  Location:
+    JDK8149330.main([Ljava/lang/String;)V @3: aload_1
+  Reason:
+    Type top (current frame, locals[1]) is not assignable to reference type
+  Current Frame:
+    bci: @3
+    flags: { }
+    locals: { '[Ljava/lang/String;' }
+    stack: { 'java/io/PrintStream' }
+  Bytecode:
+    0x0000000: b200 022b b600 03b1
+
+        at java.lang.Class.getDeclaredMethods0(Native Method)
+        at java.lang.Class.privateGetDeclaredMethods(Class.java:2701)
+        at java.lang.Class.privateGetMethodRecursive(Class.java:3048)
+        at java.lang.Class.getMethod0(Class.java:3018)
+        at java.lang.Class.getMethod(Class.java:1784)
+        at sun.launcher.LauncherHelper.validateMainClass(LauncherHelper.java:544)
+        at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:526)
+|<
+
+
+**原因は？
+Java API リファレンスによれば、<span class="deco" style="font-weight:bold;">VerifyError は「クラスファイルが適切な形式でも、ある種の内部矛盾またはセキュリティ上の問題があることを「ベリファイア (verifier)」が検出した場合にスローされます。」</span>とのことです((例えば、Java でマサカリ投げようとすると起こるやつです。元ネタ→ http://www.slideshare.net/YujiSoftware/java-55626327))。
+
+どういう矛盾が生じているのか、クラスファイルを javap で逆アセンブルして確かみてみました。
+>|
+  public static void main(java.lang.String[]);
+    descriptor: ([Ljava/lang/String;)V
+    flags: ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=3, args_size=1
+         0: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+         3: aload_1
+         4: invokevirtual #3                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+         7: return
+      LineNumberTable:
+        line 7: 0
+        line 8: 7
+|<
+これを読み解くと…。
+aload_1 はローカル変数1から参照をスタックにロードする命令です。
+この命令を使うのであれば、それよりも前に astore_1 (ローカル変数1に参照をストアする命令) がないといけませんが、このコードでは見当たりません。
+そのめに「ローカル変数が未割当（= 変数の型も未確定）なのに、そこから読み取ろうとする」という矛盾した処理になってしまい、VerifyError になったようです。
+
+
+**どう直ったの？
+Java 8 Update 102 でコンパイルすると、aload_1 の部分が ldc #3 (定数プール #3 から値をスタックにプッシュする)に変わりました。
+これなら矛盾はありません。というわけでちゃんと動きます。
+>|
+  public static void main(java.lang.String[]);
+    descriptor: ([Ljava/lang/String;)V
+    flags: ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=3, args_size=1
+         0: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+         3: ldc           #3                  // String Y
+         5: invokevirtual #4                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+         8: return
+      LineNumberTable:
+        line 7: 0
+        line 8: 8
+|<
+
+
+ちなみに、このバグは Java SE 8 (First Release) ～ Update 92 までの間で発生し、Java SE 7 だと発生しません。
+予想ですが、Java SE 8 でラムダ式が入る際に「[http://www.ne.jp/asahi/hishidama/home/tech/java/class_use.html#h_effectively_final:title=“実質的にfinal（effectively final）”な変数にはfinalを付けなくてもよくなった]」という言語仕様の変更があったので、その影響かなと思います。たぶん。
+
+
+** 参考： Update92 と Java 102 で javap した結果の詳細
+https://gist.github.com/YujiSoftware/b0483299b1c68bcf11e8972dc907c80b
+[f:id:chiheisen:20161216005848p:image]
