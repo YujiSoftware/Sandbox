@@ -1,6 +1,10 @@
+*[Java]Java で、NaN や Infinity を int にキャストしたときの値
 
+NaN を int にキャストするなんて普通はしないと思うのですが、なんとなく調べてみたら納得の結果になりました。
 
+** NaN, INFINITY を int にキャストする
 
+Java の場合、int にキャストすると <span class="deco" style="font-weight:bold;">NaN が 0, POSITIVE_INFINITY が Integer.MAX_VALUE, NEGATIVE_INIFINITY が Integer.MIN_VALUE</span> になります。
 >|java|
 public static void main(String[] args) throws Exception {
     // NaN: 0
@@ -17,5 +21,19 @@ public static void main(String[] args) throws Exception {
 }
 ||<
 
+この挙動について、言語仕様には以下のように書かれています。
+（Java 言語仕様 第3版）
 >>
+5.1.3 プリミティブ型のナローイング変換
+浮動小数点から整数型 T へのナローイング変換は、以下の2ステップにて行われる：
++第1のステップでは、浮動小数点数を以下に従って、T が long である場合は long へと、T が byte, short, char, int である場合は int へと変換する：
+--<span class="deco" style="font-weight:bold;color:red;">浮動小数点数が NaN である場合、変換の第1ステップの結果は、int あるいは long のゼロとなる。</span><br/>そうでなく、浮動小数点が無限大でない場合、その浮動小数点をIEEE754規格によるゼロへの丸めモードによってゼロに向かった整数値 V へと丸める。その後、以下の2つの場合に分かれる：
+---T が long であり、この整数値が long で表現できる場合、第1ステップの結果は long 値の V となる。
+---そうでなく、この整数値が int で表現できる場合、第1ステップの結果は int 値の V となる。
+--そうでない場合は、以下のいずれかが真となるはずである：
+---<span class="deco" style="font-weight:bold;color:red;">値が小さすぎる（大きな絶対値となる負の値や、負の無限大）場合、第1ステップの結果は int あるいは long 型で表現可能な最小値となる。</span>
+---<span class="deco" style="font-weight:bold;color:red;">値が大きすぎる（大きな絶対値となる性の値や、正の無限大）場合、第1ステップの結果は int あるいは long 型で表現可能な最大値となる。</span>
++第2のステップでは：
+--T が int あるいは long である場合、変換結果は第1ステップの結果となる。
+--T が byte, char, shrot である場合、変換結果は第1ステップの結果をT型にナローイング変換した結果となる。
 <<
