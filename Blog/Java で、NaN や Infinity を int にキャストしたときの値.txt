@@ -1,0 +1,21 @@
+
+
+
+>|java|
+public static void main(String[] args) throws Exception {
+    // NaN: 0
+    System.out.println(
+        Double.NaN + ": " + (int) Double.NaN);
+    
+    // Infinity: 2147483647
+    System.out.println(
+        Double.POSITIVE_INFINITY + ": " + (int) Double.POSITIVE_INFINITY);
+    
+    // -Infinity: -2147483648
+    System.out.println(
+        Double.NEGATIVE_INFINITY + ": " + (int) Double.NEGATIVE_INFINITY);
+}
+||<
+
+>>
+<<
