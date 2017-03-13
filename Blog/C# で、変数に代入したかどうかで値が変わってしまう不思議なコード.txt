@@ -1,0 +1,135 @@
+*1489423151*[C#] C# で、変数に代入したかどうかで値が変わってしまう不思議なコード
+
+この前の [http://d.hatena.ne.jp/chiheisen/20170301/1488388771:title=Java で NaN や Infinity を int にキャストしたときの値] を C# でやってみたら、面白い挙動になったのでメモ。
+
+
+** C# で NaN や Infinity を int にキャストしたときの値
+
+C# で NaN や Infinity を int にキャストしてみたところ、結果はいずれも "0" になりました。
+>|cs|
+Console.WriteLine(unchecked((int)double.NaN));       // 0
+Console.WriteLine(unchecked((int)double.Infinity));  // 0
+||<
+
+
+ところが、NaN や Infinity を<span class="deco" style="font-weight:bold;color:#FF0000;">一度ローカル変数に格納してからキャスト</span>してみたところ、<span class="deco" style="font-weight:bold;">今度は "-2147483648" になりました。</span>
+NaN でやねん。
+>|cs|
+double value = double.NaN;
+Console.WriteLine ((int) value);       // -2147483648
+
+double infinity = double.Infinity;
+Console.WriteLine ((int) infinity);    // -2147483648
+||<
+
+
+** 言語仕様は？
+
+言語仕様によれば、このような NaN から int へのキャストをした結果は「未指定値 (unspecified value)」((初期値(initial value) の 0 ではないです。))。
+つまり、特に値の指定はないので 0 になろうが -2147483648 になろうが、言語仕様通りということ。
+>>
+6.2.1 明示的な数値変換の一覧表
+- float または double から整数型への変換では、処理は、変換が行われるオーバーフロー チェックのコンテキスト (7.6.12 を参照) に依存します。
+--(中略)
+--unchecked コンテキストでは、変換は常に成功し、続けて以下の処理が行われます。
+---<span class="deco" style="font-weight:bold;">オペランドの値が非数 (NaN) または無限の場合は、変換先の型の未指定値が変換の結果になります。</span>
+---それ以外の場合、変換前のオペランドはゼロに向かって最も近い整数値に丸められます。この整数値が変換先の型の範囲内である場合は、この値が変換の結果になります。
+---それ以外の場合は、変換先の型の未指定値が変換の結果になります。
+<<
+
+でも、「変数に代入するかどうか」でキャストの結果が変わるのは不思議です。
+よくわからなかったので、Stack Overflow に質問を投げてみました。
+
+すると、返ってきた回答は「手元の環境で再現しない」。しかも、複数の人からこれが vote up されていました。あれ…？
+
+
+** 疑問
+
+なぜ、0 になったり -2147483648 になったりするのでしょうか。
+なぜ、変数に代入するかしないかで値が変わってしまうのでしょうか。
+なぜ、ほかの人の環境では再現しなかったのでしょうか。
+
+
+言語仕様通りと言えばそれまでです。
+でも、この動きにはその先があるはずです。
+
+
+さらに調べてみました。
+
+
+** 変数に格納するかどうかで値が変わった理由
+
+Stack Overflow のコメントの中で「コンパイラなに使ってる？」というのがありました。
+これがヒントになりました。
+自分が試していたのは Visual Studio 2013 ((.NET Framework 4.6 がインストールされている環境の "C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe" と同じものです。再現実験する際は、これをご利用ください。)) と古いバージョンだったためです。
+そこで、Visual Studio 2015 の Roslyn コンパイラーで再度実行してみたところ、(int)double.NaN の値が<span class="deco" style="font-weight:bold;"> 0 ではなく -2147483648 になりました。</span>
+>|cs|
+Console.WriteLine(unchecked((int)double.NaN));  // -2147483648
+||<
+
+
+つまり、(int)double.NaN と書いたときはコンパイラがこれを評価して結果を定数としてバイナリに埋め込んでいるということ。
+リバースアセンブルしてILを確認したところ、たしかにそうなっていました。
+>|
+  // Visual Studio 2013
+  IL_0000:  ldc.i4.0
+  IL_0001:  call       void [mscorlib]System.Console::WriteLine(int32)
+  
+  // Visual Studio 2015
+  IL_0000:  ldc.i4     0x80000000
+  IL_0005:  call       void [mscorlib]System.Console::WriteLine(int32)
+|<
+
+
+たぶん、以前のコンパイラーは NaN を int にキャストしたときの評価結果を決め打ちで 0 にしているのではないかと思います((Roslyn は、実際にその場でコードを走らせて、その結果を定数として格納にしたのではないかと思います。))。
+一方、変数に格納してからキャストした場合は実行時に評価されるので、その時の実行環境に依存しています（これについては後述）。
+この評価するタイミングの差によって、値が変わってしまうようです。
+
+
+** -2147483648 はどこから来た値？
+
+なぜ、NaN を変数に格納して int にキャストすると -2147483648 になるのでしょうか。
+<span class="deco" style="font-weight:bold;color:red;">これは、x86 (SSE2) の仕様のようです。</span>
+
+
+該当部分を逆アセンブルして確認したところ、SSE2 の cvttsd2si 命令((「切り捨てを使用して、xmm/m64の1つの倍精度浮動小数点値をr32の1つの符号付きダブルワード整数に変換する。」 IA-32 インテル&#174; アーキテクチャ・ソフトウェア・デベロッパーズ・マニュアル より))が使われていました。
+>|asm|
+            Console.WriteLine((int)value);
+00B73544  movsd       xmm0,mmword ptr [ebp-0Ch]  
+00B73549  cvttsd2si   ecx,xmm0  
+00B7354D  call        6DC26C0C  
+||<
+この命令は、<span class="deco" style="font-weight:bold;">もし入力が NaN だった場合は結果は整数不定値((「整数不定値は、x87 FPUが整数値を操作するときに戻すことがある、特殊な値である。」IA-32 インテル&#174; アーキテクチャ・ソフトウェア・デベロッパーズ・マニュアル より)) 0x80000000 になるそうです。</span>
+不定値という名前なので紛らわしいですが、0x80000000 固定のようです。
+>http://www.intel.co.jp/content/dam/www/public/ijkk/jp/ja/documents/developer/IA32_Arh_Dev_Man_Vol1_Online_i.pdf:title=IA-32 インテル&#174; アーキテクチャ・ソフトウェア・デベロッパーズ・マニュアル>
+E.4.2.2. SSE、SSE2、SSE3数値命令でNaNオペランドまたはNaN結果を含む演算の結果
+以下の表（E-1.～E-10.）は、NaNの入力値（またはNaNの結果を生じさせるNaNでない入力値）に対する、SSE、SSE2、SSE3の応答を示している。単精度 QNaN 不定値は0xffc00000であり、倍精度 QNaN 不定値は0xfff8000000000000であり、<span class="deco" style="font-weight:bold;">整数不定値は0x80000000である。</span>この値は浮動小数点値ではないが、浮動小数点値から整数への変換命令の結果になりうる。
+<<
+
+
+<span class="deco" style="font-weight:bold;">0x80000000 は 10進数で -2147483648。</span>
+よって、NaN を変数に格納して int にキャストした場合に -2147483648 が表示されていたのは、この命令の仕様によるもののようです。
+
+
+** CPUが変われば値も変わるのか？
+
+SSE2 命令の仕様で -2147483648 になるのなら、仕様が異なる ARM などの CPU で動かした場合は値も変わるのでしょうか。
+
+
+そこで、Raspberry Pi 上に mono を入れて((.NET Core で実験しようとしたのですが、まだ ARM は未対応なので諦めました。))コンパイル＆実行してみました。
+すると、<span class="deco" style="font-weight:bold;">結果はいずれの場合も 0 になりました。</span>やはり、NaN を int にキャストしたときの値は CPU に依存するようです。
+>|cs|
+Console.WriteLine(unchecked((int)double.NaN));   // 0 (on ARM)
+
+double value = double.NaN;
+Console.WriteLine ((int) value);                 // 0 (on ARM)
+||<
+
+
+** まとめ
+
+- C# で NaN を int にキャストした場合の結果は未指定。
+-- 定数式の場合、コンパイル時に評価されるため、結果はコンパイラに依存する。
+-- 変数の場合、実行時に評価されるため、結果は CPU に依存する。
+
+プログラムはCPUの上で動いている。当たり前といえば当たり前ですが、これが見えてくるのは面白いですね！
