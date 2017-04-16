@@ -1,0 +1,60 @@
+* 64bit 版の Windows に Java 1.1 をインストールする
+
+誰得な気がしなくもないですが。
+
+
+Java 1.1 は、いまでも Oracle Java Archive からダウンロードできます。
+[http://www.oracle.com/technetwork/java/javasebusiness/downloads/java-archive-downloads-javase11-419415.html?ssSourceSiteId=otnjp:title=Java Archive Downloads - Java SE 1.1]
+
+しかし、これを 64bit 版の Windows にインストールしようとすると、こんなエラーが出ます。
+>>
+---------------------------
+サポートされていない 16 ビット アプリケーション
+---------------------------
+64 ビット バージョンの Windows での非互換性のため、プログラムまたは機能である
+ "\??\C:\USERS\TEST\APPDATA\LOCAL\TEMP\~EXB0000\setup.exe" を開始または実行できません。ソフトウェア製造元に問い合わせて 64 ビット Windows 互換バージョンが利用可能であるかどうか確認してください。
+<<
+
+Java は 32bit アプリケーションですが、インストーラの一部が 16bit アプリケーションなので、途中でコケています。
+
+
+** インストール手順
+
+ReactOS プロジェクトの成果物を使えば、上記のエラーを解消してインストールができます。
+
+
+まずは前段階として、Java のインストールファイルを入手します。
+
++jdk-1_1_8_010-windows-i586.exe を実行
++前述のエラーダイアログが表示されたら、OKボタンを押さずに "%TEMP%\~EXB0000" ((ファイル名を指定して実行ダイアログで、"%TEMP%\~EXB0000" と入力すれば開きます))を開く
++フォルダ内のファイルを、すべて適当なフォルダーにコピー
++エラーダイアログを閉じる
+
+続いて、ツールをダウンロードして実行します。
+
++ReactOS用の InstallSheild Engine 3.0 16bit ランチャー解凍ツール (Is3Engine.zip) をダウンロード
+[http://toastytech.com/files/setup.html:title=32-Bit Setups]
++"Is3Engine.zip" を展開
++展開したファイルに "setup32.exe" があるので、コピーした Java インストーラと同じフォルダへ移動
++"setup32.exe" を実行
+
+これで OK です。
+あとは、昔懐かしいインストーラが起動するので、指示に従ってインストールを完了させてください。
+
+
+** ところで動くの？
+
+「インストールできても、動くの？」と思うかもしれませんが、大丈夫です、動きます。
+Windows の互換性すごいですね。
+>>
+D:\Java>C:\Program Files (x86)\Java\jdk1.1.8\bin\java.exe -version
+java version "1.1.8"
+
+D:\Java>:\Program Files (x86)\Java\jdk1.1.8\bin\java.exe Main
+Hello world!
+
+<<
+
+
+これで、もし明日から仕事で Java 1.1 を使うことになっても安心です！
+-（流石にその心配はないと思う）-
