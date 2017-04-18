@@ -1,0 +1,31 @@
+* main メソッドは private クラスに書いても動く？
+
+static なメンバー・クラス((「static 内部クラス」と書かれていることもありますが、これは間違い。言語仕様の 8.1.3 で「static ならば内部クラスではない」と明記されています。))は、以下のように "private" として宣言できます。
+この時、"java Main$Internal" と打ってこの private クラス内の main メソッドを起動できるのでしょうか。
+>|java|
+class Main{
+    private static class Internal{
+        public static void main(String[] args){
+            System.out.println("Hello world!");
+        }
+    }
+}
+||<
+
+
+** <span class="deco" style="font-weight:bold;">答え：できる</span>
+
+Java の main メソッドは、以下のすべての条件を満たしている必要があります。((Java 仮想マシン仕様には、5.2 仮想マシンの開始 で「その *public クラス* の メソッド void main(String[]) を起動する」とりますが、これは誤訳か原文の間違いかと。))
+
+- public かつ static メソッドであること
+- 戻り値の宣言は void であること
+- メソッド名は main であること
+- 引数は1つであること
+- 引数で String の配列を受け取ること
+
+
+メソッドに関しては制約がありますが、クラスに関してはロードできれば OK とのこと。
+なので、private なクラスでも問題なく起動できるようです。
+
+
+そもそも、javap してみた限り、コンパイルした段階で private クラスであるという情報は消えるていので、判断しようがなさそうです…。
