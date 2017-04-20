@@ -1,0 +1,38 @@
+*  パソコンのディスクアクセスランプがずっと点きっぱなしになってるときの調査方法
+
+<span class="deco" style="color:#FF0000;">「なんかパソコンが遅いと思ったら、<span class="deco" style="font-weight:bold;">ディスクのアクセスランプがずっと点きっぱなし</span>になってる…。なんでー！？」</span>というときがたまによくあります。
+そんなときの調査方法です。
+
+
+** ディスクアクセス原因の調査方法
+
+まずは [https://technet.microsoft.com/en-us/sysinternals/processmonitor:title=Process Monitor をダウンロード]して起動します。
+すると Filter 設定を聞かれるので、今回はそのまま OK ボタンをクリック。
+[f:id:chiheisen:20170421005716p:image]
+
+続いて、ツールバーで、「Show File System Activity」のみを選択します。
+[f:id:chiheisen:20170421005718p:image]
+
+
+すると、アクセスを行ったプロセスとパスの情報がバーっとすごい勢いで表示されます。
+[f:id:chiheisen:20170421005713p:image]
+
+
+これを見ていてピンとくる場合もありますが…。
+よくわからない場合は「Tools」→「Process Activity Summary」を表示します。
+そんでもって、[File Events] 列をクリック（ソート）します。
+[f:id:chiheisen:20170421005717p:image]
+上記の場合は avgcsrva.exe というプロセスが大量にディスクアクセスしているようです。
+こいつが犯人ですね。
+
+
+このプロセスの詳細を確認するには、メインウィンドウのリストから該当プロセスの適当な行をダブルクリックします。
+そこから、Process タブや Stack タブを見ると詳細がわかります。
+[f:id:chiheisen:20170421010022p:image]
+
+今回の場合は「AVG Scanning Core Module」（アンチウィルスソフト）がウィルススキャンを裏で勝手に行っていたのが原因のようです。
+あとは、プロセスを殺すなり、設定をいじったりして止めれば解決です。
+
+
+謎のディスクアクセスのせいでパソコンが重くなると イラっ(-_-) ときますよね…。
+そんなときに、ぜひお試しください！
