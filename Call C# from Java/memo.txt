@@ -1,0 +1,64 @@
+
+https://stackoverflow.com/a/19319046/1932017
+
+** C# 側
+
++Visual Studio で、プロジェクトを新規作成する
+++テンプレートは、「クラスライブラリ (.NET Framework)」を選択
+++プロジェクト名は、"ComApplication" としました。
++パッケージマネージャコンソールで、以下のコマンドを実行
+Install-Package DllExport
+
+その上で、適当なクラスにコードを書きます。
+このとき、エクスポートするメソッドは以下の点に注意してください。
+-属性に DllExport を付ける
+-static メソッドにする
+
+ namespace ComApplication
+ {
+     public class CSharp 
+     {
+         [DllExport]
+         public static string Test(string input)
+         {
+             return "Hello World";
+         }
+     }
+ }
+
+** Java 側
+
+jna-4.4.0.jar をダウンロードします。
+https://github.com/java-native-access/jna
+
+次に、インタフェースを作成します。
+この中に、先程 C# 側で作成したメソッドを定義します。
+ import com.sun.jna.Native;
+ 
+ public interface ICSharp extends com.sun.jna.Library{
+    public String Test(String str);
+ }
+
+次に、適当なクラスから呼び出します。
+注意点としては、loadLibrary の引数に DLL へのフルパスまたは相対パスを指定しますが拡張子 .dll は不要です。
+
+ import com.sun.jna.Native;
+ 
+ public class Main{
+ 	public static void main(String... args){
+ 		ICSharp csharp = (ICSharp)Native.loadLibrary("ComApplication", ICSharp.class);
+ 		System.out.println("Returned: " + csharp.Test("Hello"));
+ 	}
+ }
+
+そんでもってコンパイルします。
+ "C:\Program Files\Java\jdk1.8.0_121\bin\javac" -cp jna-4.4.0.jar ICSharp.java Main.java
+
+** 実行
+
+必要なファイル（今回の場合、ComApplication.dll, jna-4.4.0.jar, ICShap.class, Main.class) を全部同じディレクトリにおいて、実行します。
+ java -classpath ./jna-4.4.0.jar;./ Main
+ 
+ Returned: Hello World
+
+
