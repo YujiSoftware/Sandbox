@@ -1,18 +1,18 @@
 
 https://stackoverflow.com/a/19319046/1932017
 
-** C# ‘¤
+** C# å´
 
-+Visual Studio ‚ÅAƒvƒƒWƒFƒNƒg‚ðV‹Kì¬‚·‚é
-++ƒeƒ“ƒvƒŒ[ƒg‚ÍAuƒNƒ‰ƒXƒ‰ƒCƒuƒ‰ƒŠ (.NET Framework)v‚ð‘I‘ð
-++ƒvƒƒWƒFƒNƒg–¼‚ÍA"ComApplication" ‚Æ‚µ‚Ü‚µ‚½B
-+ƒpƒbƒP[ƒWƒ}ƒl[ƒWƒƒƒRƒ“ƒ\[ƒ‹‚ÅAˆÈ‰º‚ÌƒRƒ}ƒ“ƒh‚ðŽÀs
++Visual Studio ã§ã€ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’æ–°è¦ä½œæˆã™ã‚‹
+++ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã¯ã€ã€Œã‚¯ãƒ©ã‚¹ãƒ©ã‚¤ãƒ–ãƒ©ãƒª (.NET Framework)ã€ã‚’é¸æŠž
+++ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆåã¯ã€"ComApplication" ã¨ã—ã¾ã—ãŸã€‚
++ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ãƒžãƒãƒ¼ã‚¸ãƒ£ã‚³ãƒ³ã‚½ãƒ¼ãƒ«ã§ã€ä»¥ä¸‹ã®ã‚³ãƒžãƒ³ãƒ‰ã‚’å®Ÿè¡Œ
 Install-Package DllExport
 
-‚»‚Ìã‚ÅA“K“–‚ÈƒNƒ‰ƒX‚ÉƒR[ƒh‚ð‘‚«‚Ü‚·B
-‚±‚Ì‚Æ‚«AƒGƒNƒXƒ|[ƒg‚·‚éƒƒ\ƒbƒh‚ÍˆÈ‰º‚Ì“_‚É’ˆÓ‚µ‚Ä‚­‚¾‚³‚¢B
--‘®«‚É DllExport ‚ð•t‚¯‚é
--static ƒƒ\ƒbƒh‚É‚·‚é
+ãã®ä¸Šã§ã€é©å½“ãªã‚¯ãƒ©ã‚¹ã«ã‚³ãƒ¼ãƒ‰ã‚’æ›¸ãã¾ã™ã€‚
+ã“ã®ã¨ãã€ã‚¨ã‚¯ã‚¹ãƒãƒ¼ãƒˆã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ã¯ä»¥ä¸‹ã®ç‚¹ã«æ³¨æ„ã—ã¦ãã ã•ã„ã€‚
+-å±žæ€§ã« DllExport ã‚’ä»˜ã‘ã‚‹
+-static ãƒ¡ã‚½ãƒƒãƒ‰ã«ã™ã‚‹
 
  namespace ComApplication
  {
@@ -26,21 +26,21 @@ Install-Package DllExport
      }
  }
 
-** Java ‘¤
+** Java å´
 
-jna-4.4.0.jar ‚ðƒ_ƒEƒ“ƒ[ƒh‚µ‚Ü‚·B
+jna-4.4.0.jar ã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã—ã¾ã™ã€‚
 https://github.com/java-native-access/jna
 
-ŽŸ‚ÉAƒCƒ“ƒ^ƒtƒF[ƒX‚ðì¬‚µ‚Ü‚·B
-‚±‚Ì’†‚ÉAæ’ö C# ‘¤‚Åì¬‚µ‚½ƒƒ\ƒbƒh‚ð’è‹`‚µ‚Ü‚·B
+æ¬¡ã«ã€ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚’ä½œæˆã—ã¾ã™ã€‚
+ã“ã®ä¸­ã«ã€å…ˆç¨‹ C# å´ã§ä½œæˆã—ãŸãƒ¡ã‚½ãƒƒãƒ‰ã‚’å®šç¾©ã—ã¾ã™ã€‚
  import com.sun.jna.Native;
  
  public interface ICSharp extends com.sun.jna.Library{
     public String Test(String str);
  }
 
-ŽŸ‚ÉA“K“–‚ÈƒNƒ‰ƒX‚©‚çŒÄ‚Ño‚µ‚Ü‚·B
-’ˆÓ“_‚Æ‚µ‚Ä‚ÍAloadLibrary ‚Ìˆø”‚É DLL ‚Ö‚Ìƒtƒ‹ƒpƒX‚Ü‚½‚Í‘Š‘ÎƒpƒX‚ðŽw’è‚µ‚Ü‚·‚ªŠg’£Žq .dll ‚Í•s—v‚Å‚·B
+æ¬¡ã«ã€é©å½“ãªã‚¯ãƒ©ã‚¹ã‹ã‚‰å‘¼ã³å‡ºã—ã¾ã™ã€‚
+æ³¨æ„ç‚¹ã¨ã—ã¦ã¯ã€loadLibrary ã®å¼•æ•°ã« DLL ã¸ã®ãƒ•ãƒ«ãƒ‘ã‚¹ã¾ãŸã¯ç›¸å¯¾ãƒ‘ã‚¹ã‚’æŒ‡å®šã—ã¾ã™ãŒæ‹¡å¼µå­ .dll ã¯ä¸è¦ã§ã™ã€‚
 
  import com.sun.jna.Native;
  
@@ -51,14 +51,27 @@ https://github.com/java-native-access/jna
  	}
  }
 
-‚»‚ñ‚Å‚à‚Á‚ÄƒRƒ“ƒpƒCƒ‹‚µ‚Ü‚·B
+ãã‚“ã§ã‚‚ã£ã¦ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã—ã¾ã™ã€‚
  "C:\Program Files\Java\jdk1.8.0_121\bin\javac" -cp jna-4.4.0.jar ICSharp.java Main.java
 
-** ŽÀs
+** å®Ÿè¡Œ
 
-•K—v‚Èƒtƒ@ƒCƒ‹i¡‰ñ‚Ìê‡AComApplication.dll, jna-4.4.0.jar, ICShap.class, Main.class) ‚ð‘S•”“¯‚¶ƒfƒBƒŒƒNƒgƒŠ‚É‚¨‚¢‚ÄAŽÀs‚µ‚Ü‚·B
+å¿…è¦ãªãƒ•ã‚¡ã‚¤ãƒ«ï¼ˆä»Šå›žã®å ´åˆã€ComApplication.dll, jna-4.4.0.jar, ICShap.class, Main.class) ã‚’å…¨éƒ¨åŒã˜ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«ãŠã„ã¦ã€å®Ÿè¡Œã—ã¾ã™ã€‚
  java -classpath ./jna-4.4.0.jar;./ Main
  
  Returned: Hello World
 
+** C# å´ã§ä¾‹å¤–ãŒèµ·ããŸå ´åˆã¯ï¼Ÿ
 
+Java å´ã§ Error ãŒç™ºç”Ÿã—ã¾ã™ã€‚
+>|
+Exception in thread "main" java.lang.Error: Invalid memory access
+        at com.sun.jna.Native.invokePointer(Native Method)
+        at com.sun.jna.Function.invokePointer(Function.java:490)
+        at com.sun.jna.Function.invokeString(Function.java:654)
+        at com.sun.jna.Function.invoke(Function.java:427)
+        at com.sun.jna.Function.invoke(Function.java:354)
+        at com.sun.jna.Library$Handler.invoke(Library.java:244)
+        at com.sun.proxy.$Proxy0.Test(Unknown Source)
+        at Main.main(Main.java:6)
+|<
