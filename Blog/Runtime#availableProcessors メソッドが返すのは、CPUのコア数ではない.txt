@@ -1,0 +1,48 @@
+* Runtime#availableProcessors メソッドが返すのは、CPUのコア数ではない
+
+Runtime#availableProcessors メソッドが返すのは「CPU のコア数」ではなく「JavaVM のプロセスが使用できるコア数」です。
+このことは、JavaDoc に明記されています。
+（プロセッサ数と記載されていますが、これは論理コア数と同義です）
+
+>|https://docs.oracle.com/javase/jp/8/docs/api/java/lang/Runtime.html#availableProcessors--:title=Runtime (Java Platform SE 8 )|
+public int availableProcessors()
+
+Java仮想マシンが使用できるプロセッサの数を返します。
+この値は、仮想マシンの呼出し中に変更される可能性があります。このため、利用可能なプロセッサ数に影響を受けるアプリケーションは、このプロパティをときどきポーリングして、リソース使用法を調整する必要があります。 
+|<
+
+そのため、以下の方法でプロセスが使用できるコア数を制限すると、マシンに実装されているコア数に関係なく結果が変わります。
+（以下、論理8コア（物理4コア×Hyepr Threading）のマシンで実行した結果を記載）
+
+** Windows の場合
+
+start コマンドで、Affinity を指定して起動します。
+
+C:\Test>start /AFFINITY 0x1 java Main
+Runtime#availableProcessors() = 1
+
+または、タスクマネージャの詳細タブで変更したい Java.exe を右クリック→ 「関係の設定」から使用するプロセッサを減らします。
+この場合、JavaDoc 記載の通り変更した瞬間に availableProcessors メソッドが返す値が変わります。
+
+** Linux の場合
+
+taskset コマンドを使います。
+
+[vagrant@localhost ~]$ taskset 0x1 java Main
+Runtime#availableProcessors() = 1
+
+なお、Linux 版の JavaVM は最近まで「taskset でプロセスが使用するコアを制限しても、Runtime#availableProcessors メソッドが常にCPUのコア数を返す」というバグが有りました。
+[http://bugs.java.com/view_bug.do?bug_id=6515172:title=Bug ID: JDK-6515172 Runtime.availableProcessors() ignores Linux taskset command]
+これは、Java SE 8 Update 131（2017年4月18日リリース）で修正されました。
+>>
+[vagrant@localhost ~]$ taskset 0x1 /usr/java/jdk1.8.0_121/jre/bin/java Main
+Runtime#availableProcessors() = 8
+
+[vagrant@localhost ~]$ taskset 0x1 /usr/java/jdk1.8.0_131/jre/bin/java Main
+Runtime#availableProcessors() = 1
+
+<<
+
+このバグ、レポートされたのは2007年01月19日で修正されたのが2016年01月29日でした。
+なぜ10年もほっとかれたんでしょうね…。
+
