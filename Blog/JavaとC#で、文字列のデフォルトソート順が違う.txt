@@ -1,0 +1,60 @@
+* JavaとC#で、文字列のデフォルトソート順が違う
+
+Java と C# で文字列をソートした場合、結果がぜんぜん異なるということに気づきました。
+あまり考えずにコーディングしていると、あれどうなるんだっけ？？ってなります…。
+
+** Java の場合
+
+文字コード (Unicode) 順でソートされます。
+そのため、A → B → C → a → b → c → … という順番になります。
+
+ public static void main(String[] args) throws Exception {
+     String[] source = new String[] { "c", "C", "a", "A", "B", "b"};
+     Arrays.sort(source);
+
+     // A, B, C, a, b, c
+     System.out.println(Arrays.toString(source));
+ }
+
+** C# の場合
+
+カルチャ（文化）に沿った順序でソートされます。
+そのため、a → A → b → B → c → C → … という順番になります。
+
+ public static void Main(string[] args)
+ {
+     String[] source = new String[] { "c", "C", "a", "A", "B", "b" };
+     String[] sorted = source.OrderBy(s => s).ToArray();
+
+     // a, A, b, B, c, C
+     Console.WriteLine(string.Join(", ", sorted));
+ }
+
+** Java で C# と同じようにソートするには？
+
+Java で C# と同じようにカルチャに沿った順序でソートするには、[[Collator>https://docs.oracle.com/javase/jp/8/docs/api/java/text/Collator.html]] を使います。
+Collator は Comparable を継承しているので、ソート順指定の部分に放り込むだけでOK。
+（Arrays.sort メソッドなら、第二引数に指定する）
+
+ public static void main(String[] args) throws Exception {
+     String[] source = new String[] { "c", "C", "a", "A", "B", "b" };
+     Arrays.sort(source, Collator.getInstance());
+
+     // a, A, b, B, c, C
+     System.out.println(Arrays.toString(source));
+ }
+
+** C# で Java と同じようにソートするには？
+
+C# で Java と同じように文字コード (Unicode) 順でソートするには、StringComparer.Ordinal を使います。
+StringComparer は IComparer<string> を継承しているので、ソート順指定の部分に放り込むだけでOK。
+（Enumerable.OrderBy メソッドなら、第二引数に指定する）
+
+ public static void Main(string[] args)
+ {
+     String[] source = new String[] { "c", "C", "a", "A", "B", "b" };
+     String[] sorted = source.OrderBy(s => s, StringComparer.Ordinal).ToArray();
+
+     // a, A, b, B, c, C
+     Console.WriteLine(string.Join(", ", sorted));
+ }
